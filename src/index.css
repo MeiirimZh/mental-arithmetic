@@ -1,0 +1,24 @@
+@font-face {
+    font-family: 'WDXL';
+    src: url('./assets/fonts/WDXLLubrifontTC-Regular.ttf');
+}
+
+body {
+    background-color: #e15765;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper {
+    width: 100%;
+    max-width: 1000px;
+
+    margin: 0 auto;
+}
+
+.link {
+    text-decoration: none;
+}
