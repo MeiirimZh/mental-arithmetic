@@ -23,6 +23,12 @@ export default function TrainingPage({ minNum, maxNum, pickRandom }) {
 
         return array
     }
+
+    function generateNumbers() {
+        let termsCount = generateTermsCount()
+        let operations = generateOperations(termsCount - 1)
+        let numbers = []
+    }
     
     return (
         <>
