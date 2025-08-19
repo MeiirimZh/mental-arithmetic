@@ -9,8 +9,10 @@ import ResultPage from './pages/ResultPage/ResultPage'
 import './App.css'
 
 function App() {
-  const [minNum, setMinNum] = useState(2)
-  const [maxNum, setMaxNum] = useState(2)
+  const [minTermCount, setMinTermCount] = useState(2)
+  const [maxTermCount, setMaxTermCount] = useState(3)
+  const [minNum, setMinNum] = useState(1)
+  const [maxNum, setMaxNum] = useState(10)
 
   function pickRandom(array) {
     return array[
@@ -18,12 +20,20 @@ function App() {
     ]
   }
 
+  function rangeRandom(min, max) {
+    return Math.floor(
+      Math.random() * (max - min + 1)
+    ) + min
+  }
+
   return (
     <>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/training" element={
-          <TrainingPage minNum={ minNum } maxNum={ maxNum } pickRandom={ pickRandom } />
+          <TrainingPage minTermCount={ minTermCount } maxTermCount={ maxTermCount }
+          minNum={ minNum } maxNum={ maxNum }
+          pickRandom={ pickRandom } rangeRandom={ rangeRandom } />
           } />
         <Route path="/statistics" element={<StatisticsPage />} />
         <Route path="/result" element={<ResultPage />} />
