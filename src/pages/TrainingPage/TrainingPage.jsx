@@ -73,13 +73,33 @@ export default function TrainingPage({ minTermCount, maxTermCount, minNum, maxNu
             }
         }
 
-        return `${numbers}: ${operations}`
+        return [numbers, operations]
     }
+
+    function createProblemStr(numbers, operations) {
+        let string = []
+
+        for (let i = 0; i < numbers.length; i++) {
+            if (i === numbers.length - 1) {
+                string.push(numbers[i])
+                break
+            }
+
+            string.push(numbers[i])
+            string.push(operations[i])
+        }
+
+        return string.join("")
+    }
+
+    let problem = generateProblem(generateTerms())
+    let problemStr = createProblemStr(problem[0], problem[1])
 
     return (
         <>
             <Header></Header>
-            <h2>{ generateProblem(generateTerms()) }</h2>
+            <h2>{ problemStr }</h2>
+            <h2>{ eval(problemStr) }</h2>
         </>
     )
 }
