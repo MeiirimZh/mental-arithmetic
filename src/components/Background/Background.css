@@ -1,3 +1,7 @@
 .bg {
     background-color: var(--bgColor);
+    padding-left: var(--paddingLeft);
+    padding-top: var(--paddingTop);
+    padding-right: var(--paddingRight);
+    padding-bottom: var(--paddingBottom);
 }
