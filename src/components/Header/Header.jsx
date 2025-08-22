@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 export default function Header() {
     return (
-        <header className="header wrapper">
+        <header className="header">
             <Link to="/" className="link">Mental Arithmetics</Link>
             <nav>
                 <ul>

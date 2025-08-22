@@ -97,7 +97,7 @@ export default function TrainingPage({ minTermCount, maxTermCount, minNum, maxNu
     let problemStr = createProblemStr(problem[0], problem[1])
 
     return (
-        <>
+        <div className="wrapper">
             <Header></Header>
             <h2>{ problemStr }</h2>
             <h2>{ eval(problemStr) }</h2>
@@ -105,6 +105,6 @@ export default function TrainingPage({ minTermCount, maxTermCount, minNum, maxNu
             <Background bgColor="#ffffff" padding={ [111, 62] }>
                 <h2>Background</h2>
             </Background>
-        </>
+        </div>
     )
 }
