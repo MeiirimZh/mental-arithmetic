@@ -93,16 +93,11 @@ export default function TrainingPage({ minTermCount, maxTermCount, minNum, maxNu
         return string.join("")
     }
 
-    let problem = generateProblem(generateTerms())
-    let problemStr = createProblemStr(problem[0], problem[1])
-
     return (
         <div className="wrapper">
             <Header></Header>
-            <h2>{ problemStr }</h2>
-            <h2>{ eval(problemStr) }</h2>
 
-            <Background bgColor="#ffffff" padding={ [111, 62] }>
+            <Background bgColor="#F0828C" width="600px" height="200px" borderRadius="20px">
                 <h2>Background</h2>
             </Background>
         </div>

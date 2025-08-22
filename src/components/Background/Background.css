@@ -1,5 +1,11 @@
 .bg {
     background-color: var(--bgColor);
     
+    width: var(--width);
+    height: var(--height);
+
+    border-radius: var(--borderRadius);
+
+    margin: 0 auto;
     padding: var(--padding);
 }
