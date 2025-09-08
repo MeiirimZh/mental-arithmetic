@@ -1,6 +1,7 @@
 .text {
     width: fit-content;
 
+    font-family: var(--fontFamily);
     font-size: var(--fontSize);
 
     color: var(--color);
