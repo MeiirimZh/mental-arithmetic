@@ -10,6 +10,8 @@
 
     border-radius: var(--borderRadius);
 
+    box-shadow: var(--shadow);
+
     margin: 0 auto;
     padding: var(--padding);
 }
