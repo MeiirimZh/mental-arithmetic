@@ -2,4 +2,6 @@
     width: fit-content;
 
     font-size: var(--fontSize);
+
+    color: var(--color);
 }

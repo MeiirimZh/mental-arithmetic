@@ -1,8 +1,9 @@
 import './Text.css'
 
-export default function Text({ children, fontSize }) {
+export default function Text({ children, fontSize, color }) {
     const style = {
-        "fontSize": fontSize
+        "--fontSize": fontSize,
+        "--color": color
     }
 
     return (

@@ -1,6 +1,7 @@
 import { useState } from "react"
 import Header from "../../components/Header/Header"
 import Background from "../../components/Background/Background"
+import Text from "../../components/Text/Text"
 
 export default function TrainingPage({ minTermCount, maxTermCount, minNum, maxNum, pickRandom, rangeRandom }) {
     // The percentage at which larger numbers are selected when adding and substracting
@@ -98,7 +99,7 @@ export default function TrainingPage({ minTermCount, maxTermCount, minNum, maxNu
             <Header></Header>
 
             <Background bgColor="#F0828C" width="600px" height="200px" borderRadius="20px">
-                <h2>Background</h2>
+                <Text fontSize="32px" color="#fff">Background</Text>
             </Background>
         </div>
     )
