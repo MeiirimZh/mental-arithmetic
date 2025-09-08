@@ -3,6 +3,11 @@
     src: url('./assets/fonts/WDXLLubrifontTC-Regular.ttf');
 }
 
+@font-face {
+    font-family: 'Rubik';
+    src: url('./assets/fonts/Rubik-VariableFont_wght.ttf');
+}
+
 body {
     background-color: #e15765;
 }
