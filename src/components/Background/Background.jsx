@@ -1,6 +1,6 @@
 import './Background.css'
 
-export default function Background({ children, bgColor, width, height, padding, borderRadius }) {
+export default function Background({ children, bgColor, width, height, padding, borderRadius, centerH, centerV }) {
     let paddingStyle
 
     if (padding) {
@@ -15,7 +15,9 @@ export default function Background({ children, bgColor, width, height, padding, 
         "width": width,
         "height": height,
         "padding": paddingStyle,
-        "borderRadius": borderRadius
+        "borderRadius": borderRadius,
+        "--centerH": centerH ? "center" : "flex-start",
+        "--centerV": centerV ? "center" : "stretch"
     }
 
     return (

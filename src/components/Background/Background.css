@@ -1,4 +1,8 @@
 .bg {
+    display: flex;
+    justify-content: var(--centerH);
+    align-items: var(--centerV);
+
     background-color: var(--bgColor);
     
     width: var(--width);

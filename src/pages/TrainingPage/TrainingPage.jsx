@@ -98,8 +98,9 @@ export default function TrainingPage({ minTermCount, maxTermCount, minNum, maxNu
         <div className="wrapper">
             <Header></Header>
 
-            <Background bgColor="#F0828C" width="600px" height="200px" borderRadius="20px">
-                <Text fontFamily="Rubik" fontSize="32px" color="#fff">Background</Text>
+            <Background bgColor="#F0828C" width="600px" height="200px" borderRadius="20px"
+            centerH="center" centerV="center">
+                <Text fontFamily="Rubik" fontSize="64px" color="#fff">32 - 12 * 2</Text>
             </Background>
         </div>
     )
