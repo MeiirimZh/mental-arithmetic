@@ -11,7 +11,7 @@ export default function TrainingPage({ minTermCount, maxTermCount, minNum, maxNu
     const [MDPercent, setMDPercent] = useState(0.8)
 
     const [answer, setAnswer] = useState()
-    const [problem, setProblem] = useState(createProblemStr())
+    const [problem, setProblem] = useState(generateProblem())
 
     function handleAnswerChange(event) {
         setAnswer(event.target.value)
@@ -38,31 +38,31 @@ export default function TrainingPage({ minTermCount, maxTermCount, minNum, maxNu
 
     function generateTerms() {
         let count = generateTermCount()
-        let numbers = []
+        let terms = []
 
         for (let i = 0; i < count; i ++) {
-            numbers.push(rangeRandom(minNum, maxNum))
+            terms.push(rangeRandom(minNum, maxNum))
         }
 
-        return numbers
+        return terms
     }
 
-    function generateProblem(numbers) {
+    function returnTermsAndOperations(terms) {
         let operations = []
         
-        for (let i = 0; i < numbers.length; i++) {
-            if (i === numbers.length - 1) {
+        for (let i = 0; i < terms.length; i++) {
+            if (i === terms.length - 1) {
                 break
             }
 
             let chance = Math.round(Math.random() * 10) / 10
 
-            if (numbers[i] > maxNum / 2 || numbers[i + 1] > maxNum / 2) {
+            if (terms[i] > maxNum / 2 || terms[i + 1] > maxNum / 2) {
                 if (ASPercent >= chance) {
                     operations.push(pickRandom(["+", "-"]))
                 }
                 else {
-                    if (checkDivisibility(i, numbers, operations)) {
+                    if (checkDivisibility(i, terms, operations)) {
                         operations.push(pickRandom(["*", "/"]))
                         continue
                     }
@@ -71,7 +71,7 @@ export default function TrainingPage({ minTermCount, maxTermCount, minNum, maxNu
             }
             else {
                 if (MDPercent >= chance) {
-                    if (checkDivisibility(i, numbers, operations)) {
+                    if (checkDivisibility(i, terms, operations)) {
                         operations.push(pickRandom(["*", "/"]))
                         continue
                     }
@@ -83,23 +83,23 @@ export default function TrainingPage({ minTermCount, maxTermCount, minNum, maxNu
             }
         }
 
-        return [numbers, operations]
+        return [terms, operations]
     }
 
-    function createProblemStr() {
-        let problem = generateProblem(generateTerms())
-        let numbers = problem[0]
+    function generateProblem() {
+        let problem = returnTermsAndOperations(generateTerms())
+        let terms = problem[0]
         let operations = problem[1]
 
         let string = []
 
-        for (let i = 0; i < numbers.length; i++) {
-            if (i === numbers.length - 1) {
-                string.push(numbers[i])
+        for (let i = 0; i < terms.length; i++) {
+            if (i === terms.length - 1) {
+                string.push(terms[i])
                 break
             }
 
-            string.push(numbers[i])
+            string.push(terms[i])
             string.push(operations[i])
         }
 
