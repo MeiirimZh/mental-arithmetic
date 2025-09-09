@@ -10,6 +10,13 @@ export default function TrainingPage({ minTermCount, maxTermCount, minNum, maxNu
     // The percentage at which smaller numbers are selected when multiplying and dividing
     const [MDPercent, setMDPercent] = useState(0.8)
 
+    const [answer, setAnswer] = useState()
+    const [problem, setProblem] = useState(createProblemStr())
+
+    function handleAnswerChange(event) {
+        setAnswer(event.target.value)
+    }
+
     function checkDivisibility(i, numbers, operations) {
         if (i === 0) {
             if (numbers[i] % numbers[i + 1] === 0) {
@@ -79,7 +86,11 @@ export default function TrainingPage({ minTermCount, maxTermCount, minNum, maxNu
         return [numbers, operations]
     }
 
-    function createProblemStr(numbers, operations) {
+    function createProblemStr() {
+        let problem = generateProblem(generateTerms())
+        let numbers = problem[0]
+        let operations = problem[1]
+
         let string = []
 
         for (let i = 0; i < numbers.length; i++) {
@@ -92,7 +103,7 @@ export default function TrainingPage({ minTermCount, maxTermCount, minNum, maxNu
             string.push(operations[i])
         }
 
-        return string.join("")
+        return string.join(" ")
     }
 
     return (
@@ -102,10 +113,11 @@ export default function TrainingPage({ minTermCount, maxTermCount, minNum, maxNu
             <Background bgColor="#F0828C" width="600px" height="200px" borderRadius="20px"
             centerH="center" centerV="center" shadow="rgba(0, 0, 0, 0.25) 6px 6px 4px"
             margin="0 auto 40px auto">
-                <Text fontFamily="Rubik" fontSize="64px" color="#fff">32 - 12 * 2</Text>
+                <Text fontFamily="Rubik" fontSize="64px" color="#fff">{ problem }</Text>
             </Background>
 
-            <TextEdit width="200px" height="40px" fontFamily="Rubik" fontSize="24px"
+            <TextEdit value={ answer } onChange={ handleAnswerChange }
+            width="200px" height="40px" fontFamily="Rubik" fontSize="24px"
             bgColor="#fff" color="#3f3f3f" borderRadius="10px" shadow="rgba(0, 0, 0, 0.25) 6px 6px 4px"
             centerH={ true } textIndent="10px" placeholder="Ответ..." />
         </div>
