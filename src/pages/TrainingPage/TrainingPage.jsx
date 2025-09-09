@@ -2,6 +2,7 @@ import { useState } from "react"
 import Header from "../../components/Header/Header"
 import Background from "../../components/Background/Background"
 import Text from "../../components/Text/Text"
+import TextEdit from "../../components/TextEdit/TextEdit"
 
 export default function TrainingPage({ minTermCount, maxTermCount, minNum, maxNum, pickRandom, rangeRandom }) {
     // The percentage at which larger numbers are selected when adding and substracting
@@ -102,6 +103,10 @@ export default function TrainingPage({ minTermCount, maxTermCount, minNum, maxNu
             centerH="center" centerV="center" shadow="rgba(0, 0, 0, 0.25) 6px 6px 4px">
                 <Text fontFamily="Rubik" fontSize="64px" color="#fff">32 - 12 * 2</Text>
             </Background>
+
+            <TextEdit width="200px" height="40px" fontFamily="Rubik" fontSize="24px"
+            bgColor="#fff" color="#3f3f3f" borderRadius="10px" shadow="rgba(0, 0, 0, 0.25) 6px 6px 4px"
+            centerH={ true } textIndent="10px" />
         </div>
     )
 }
