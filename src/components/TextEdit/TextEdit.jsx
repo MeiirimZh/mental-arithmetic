@@ -1,6 +1,7 @@
 import './TextEdit.css'
 
-export default function TextEdit({ width, height, fontSize, fontFamily, bgColor, color, shadow, borderRadius, centerH, textIndent }) {
+export default function TextEdit({ width, height, fontSize, fontFamily, bgColor, color, shadow, 
+    borderRadius, centerH, textIndent, placeholder }) {
     const style = {
         "--width": width,
         "--height": height,
@@ -15,6 +16,6 @@ export default function TextEdit({ width, height, fontSize, fontFamily, bgColor,
     }
 
     return (
-        <input type="text" style={ style } className="textEdit"/>
+        <input type="text" style={ style } className="textEdit" placeholder={ placeholder } />
     )
 }

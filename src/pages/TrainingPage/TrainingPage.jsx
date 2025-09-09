@@ -107,7 +107,7 @@ export default function TrainingPage({ minTermCount, maxTermCount, minNum, maxNu
 
             <TextEdit width="200px" height="40px" fontFamily="Rubik" fontSize="24px"
             bgColor="#fff" color="#3f3f3f" borderRadius="10px" shadow="rgba(0, 0, 0, 0.25) 6px 6px 4px"
-            centerH={ true } textIndent="10px" />
+            centerH={ true } textIndent="10px" placeholder="Ответ..." />
         </div>
     )
 }
