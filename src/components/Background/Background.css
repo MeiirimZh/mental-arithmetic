@@ -12,6 +12,6 @@
 
     box-shadow: var(--shadow);
 
-    margin: 0 auto;
+    margin: var(--margin);
     padding: var(--padding);
 }
