@@ -4,6 +4,7 @@ import Background from "../../components/Background/Background"
 import Text from "../../components/Text/Text"
 import TextEdit from "../../components/TextEdit/TextEdit"
 import Button from "../../components/Button/Button"
+import HLayout from "../../components/HLayout/HLayout"
 
 export default function TrainingPage({ minTermCount, maxTermCount, minNum, maxNum, pickRandom, rangeRandom }) {
     // The percentage at which larger numbers are selected when adding and substracting
@@ -134,15 +135,18 @@ export default function TrainingPage({ minTermCount, maxTermCount, minNum, maxNu
                 <Text fontFamily="Rubik" fontSize="64px" color="#fff">{ problem }</Text>
             </Background>
 
-            <TextEdit value={ answer } onChange={ handleAnswerChange } onKeyDown={ handleKeyDown }
-            width="200px" height="40px" fontFamily="Rubik" fontSize="24px"
-            bgColor="#fff" color="#3f3f3f" borderRadius="10px" shadow="rgba(0, 0, 0, 0.25) 6px 6px 4px"
-            centerH={ true } textIndent="10px" placeholder="Ответ..." />
+            <HLayout justifyContent="center" gap="10px">
+                <TextEdit value={ answer } onChange={ handleAnswerChange } onKeyDown={ handleKeyDown }
+                width="200px" height="40px" fontFamily="Rubik" fontSize="24px"
+                bgColor="#fff" color="#3f3f3f" borderRadius="10px" shadow="rgba(0, 0, 0, 0.25) 6px 6px 4px"
+                textIndent="10px" placeholder="Ответ..." />
 
-            <Button width="40px" height="40px" fontSize="24px" fontWeight="bold" 
-            bgColor="#F0828C" color="#fff" borderRadius="20px">
-                ✓
-            </Button>
+                <Button width="40px" height="40px" fontSize="24px" fontWeight="bold" 
+                bgColor="#F0828C" color="#fff" borderRadius="20px"
+                shadow="rgba(0, 0, 0, 0.25) 6px 6px 4px">
+                    ✓
+                </Button>
+            </HLayout>
         </div>
     )
 }

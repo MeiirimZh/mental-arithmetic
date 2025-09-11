@@ -1,8 +1,13 @@
 import './HLayout.css'
 
-export default function HLayout({ children }) {
+export default function HLayout({ children, justifyContent, gap }) {
+    const style = {
+        "--justifyContent": justifyContent,
+        "--gap": gap
+    }
+
     return (
-        <div className="hlayout">
+        <div style={ style } className="hlayout">
             { children }
         </div>
     )

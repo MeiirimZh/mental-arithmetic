@@ -1,3 +1,5 @@
 .hlayout {
     display: flex;
+    justify-content: var(--justifyContent);
+    gap: var(--gap);
 }
