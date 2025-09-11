@@ -22,6 +22,14 @@ export default function TrainingPage({ minTermCount, maxTermCount, minNum, maxNu
         }
     }
 
+    function handleKeyDown(event) {
+        if (event.key === "Enter") {
+            if (answer != solveProblem(problem)) {
+                console.log("Incorrect!")
+            }
+        }
+    }
+
     function checkDivisibility(i, numbers, operations) {
         if (i === 0) {
             if (numbers[i] % numbers[i + 1] === 0) {
@@ -125,7 +133,7 @@ export default function TrainingPage({ minTermCount, maxTermCount, minNum, maxNu
                 <Text fontFamily="Rubik" fontSize="64px" color="#fff">{ problem }</Text>
             </Background>
 
-            <TextEdit value={ answer } onChange={ handleAnswerChange }
+            <TextEdit value={ answer } onChange={ handleAnswerChange } onKeyDown={ handleKeyDown }
             width="200px" height="40px" fontFamily="Rubik" fontSize="24px"
             bgColor="#fff" color="#3f3f3f" borderRadius="10px" shadow="rgba(0, 0, 0, 0.25) 6px 6px 4px"
             centerH={ true } textIndent="10px" placeholder="Ответ..." />

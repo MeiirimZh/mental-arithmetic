@@ -1,6 +1,6 @@
 import './TextEdit.css'
 
-export default function TextEdit({ value, onChange, width, height, fontSize, fontFamily, bgColor, color, shadow, 
+export default function TextEdit({ value, onChange, onKeyDown, width, height, fontSize, fontFamily, bgColor, color, shadow, 
     borderRadius, centerH, textIndent, placeholder }) {
     const style = {
         "--width": width,
@@ -17,6 +17,6 @@ export default function TextEdit({ value, onChange, width, height, fontSize, fon
 
     return (
         <input type="text" style={ style } className="textEdit"
-        value={ value } onChange={ onChange } placeholder={ placeholder } />
+        value={ value } onChange={ onChange } onKeyDown={ onKeyDown } placeholder={ placeholder } />
     )
 }
