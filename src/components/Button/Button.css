@@ -16,4 +16,13 @@
     box-shadow: var(--shadow);
 
     margin: var(--margin);
+
+    transition: .2s;
+}
+
+.button:hover {
+    transform: scale(.92);
+    filter: brightness(0.9);
+
+    transition: .2s;
 }
