@@ -19,17 +19,25 @@ export default function TrainingPage({ minTermCount, maxTermCount, minNum, maxNu
         setAnswer(event.target.value)
 
         if (event.target.value == solveProblem(problem)) {
-            setProblem(generateProblem())
-            setAnswer("")
+            nextProblem()
         }
     }
 
     function handleKeyDown(event) {
         if (event.key === "Enter") {
-            if (answer != solveProblem(problem)) {
-                console.log("Incorrect!")
-            }
+            checkAnswer()
         }
+    }
+
+    function checkAnswer() {
+        if (answer != solveProblem(problem)) {
+            console.log("Incorrect!")
+        }
+    }
+
+    function nextProblem() {
+        setProblem(generateProblem())
+        setAnswer("")
     }
 
     function checkDivisibility(i, numbers, operations) {
@@ -141,8 +149,9 @@ export default function TrainingPage({ minTermCount, maxTermCount, minNum, maxNu
                 bgColor="#fff" color="#3f3f3f" borderRadius="10px" shadow="rgba(0, 0, 0, 0.25) 6px 6px 4px"
                 textIndent="10px" placeholder="Ответ..." />
 
-                <Button width="40px" height="40px" fontSize="24px" fontWeight="bold" 
-                bgColor="#F0828C" color="#fff" borderRadius="20px"
+                <Button onClick={ checkAnswer } width="40px" height="40px" 
+                fontSize="24px" fontWeight="bold" bgColor="#F0828C" 
+                color="#fff" borderRadius="20px"
                 shadow="rgba(0, 0, 0, 0.25) 6px 6px 4px">
                     ✓
                 </Button>
