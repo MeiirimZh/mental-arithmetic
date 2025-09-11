@@ -3,6 +3,7 @@ import Header from "../../components/Header/Header"
 import Background from "../../components/Background/Background"
 import Text from "../../components/Text/Text"
 import TextEdit from "../../components/TextEdit/TextEdit"
+import Button from "../../components/Button/Button"
 
 export default function TrainingPage({ minTermCount, maxTermCount, minNum, maxNum, pickRandom, rangeRandom }) {
     // The percentage at which larger numbers are selected when adding and substracting
