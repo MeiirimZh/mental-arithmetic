@@ -1,0 +1,18 @@
+.button {
+    width: var(--width);
+    height: var(--height);
+
+    font-family: var(--fontFamily);
+    font-size: var(--fontSize);
+
+    border: none;
+    border-radius: var(--borderRadius);
+    outline: none;
+
+    background-color: var(--bgColor);
+    color: var(--color);
+
+    box-shadow: var(--shadow);
+
+    margin: var(--margin);
+}

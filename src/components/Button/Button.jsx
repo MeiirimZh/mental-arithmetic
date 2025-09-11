@@ -1,8 +1,21 @@
 import './Button.css'
 
-export default function Button({ children, onClick }) {
+export default function Button({ children, onClick, width, height, fontSize, fontFamily, bgColor, color, shadow,
+    borderRadius, centerH }) {
+    const style = {
+        "--width": width,
+        "--height": height,
+        "--fontSize": fontSize,
+        "--fontFamily": fontFamily,
+        "--bgColor": bgColor,
+        "--color": color,
+        "--shadow": shadow,
+        "--borderRadius": borderRadius,
+        "--margin": centerH ? "0 auto" : "none"
+    }
+    
     return (
-        <button className="button" onClick={ onClick }>
+        <button style={ style } className="button" onClick={ onClick }>
             { children }
         </button>
     )
