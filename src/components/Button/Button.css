@@ -4,6 +4,7 @@
 
     font-family: var(--fontFamily);
     font-size: var(--fontSize);
+    font-weight: var(--fontWeight);
 
     border: none;
     border-radius: var(--borderRadius);

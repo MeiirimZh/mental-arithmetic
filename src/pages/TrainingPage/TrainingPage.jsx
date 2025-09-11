@@ -138,6 +138,11 @@ export default function TrainingPage({ minTermCount, maxTermCount, minNum, maxNu
             width="200px" height="40px" fontFamily="Rubik" fontSize="24px"
             bgColor="#fff" color="#3f3f3f" borderRadius="10px" shadow="rgba(0, 0, 0, 0.25) 6px 6px 4px"
             centerH={ true } textIndent="10px" placeholder="Ответ..." />
+
+            <Button width="40px" height="40px" fontSize="24px" fontWeight="bold" 
+            bgColor="#F0828C" color="#fff" borderRadius="20px">
+                ✓
+            </Button>
         </div>
     )
 }
