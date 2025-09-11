@@ -15,6 +15,11 @@ export default function TrainingPage({ minTermCount, maxTermCount, minNum, maxNu
 
     function handleAnswerChange(event) {
         setAnswer(event.target.value)
+
+        if (event.target.value == solveProblem(problem)) {
+            setProblem(generateProblem())
+            setAnswer("")
+        }
     }
 
     function checkDivisibility(i, numbers, operations) {
@@ -104,6 +109,10 @@ export default function TrainingPage({ minTermCount, maxTermCount, minNum, maxNu
         }
 
         return string.join(" ")
+    }
+
+    function solveProblem(problem) {
+        return eval(problem)
     }
 
     return (
