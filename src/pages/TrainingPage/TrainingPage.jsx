@@ -161,12 +161,14 @@ export default function TrainingPage({ minTermCount, maxTermCount, minNum, maxNu
             </HLayout>
 
             <Modal isOpen={ endTraining }>
-                <Text fontSize="30px" fontFamily="WDXL">
+                <Text fontSize="30px" fontFamily="WDXL" color="#131313">
                     Вы проиграли!
                 </Text>
                 <HLayout gap="10px">
-                    <Button onClick={() => window.location.reload()}>Начать заново</Button>
-                    <Button><Link to="/">На главный</Link></Button>
+                    <Button fontFamily="Rubik" onClick={() => window.location.reload()} color="#131313">
+                        Начать заново
+                    </Button>
+                    <Button fontFamily="Rubik"><Link className="link" to="/">На главный</Link></Button>
                 </HLayout>
             </Modal>
         </div>
