@@ -1,10 +1,12 @@
 import { useState } from "react"
+import { Link } from "react-router-dom"
 import Header from "../../components/Header/Header"
 import Background from "../../components/Background/Background"
 import Text from "../../components/Text/Text"
 import TextEdit from "../../components/TextEdit/TextEdit"
 import Button from "../../components/Button/Button"
 import HLayout from "../../components/HLayout/HLayout"
+import Modal from "../../components/Modal/Modal"
 
 export default function TrainingPage({ minTermCount, maxTermCount, minNum, maxNum, pickRandom, rangeRandom }) {
     // The percentage at which larger numbers are selected when adding and substracting
@@ -14,6 +16,7 @@ export default function TrainingPage({ minTermCount, maxTermCount, minNum, maxNu
 
     const [answer, setAnswer] = useState()
     const [problem, setProblem] = useState(generateProblem())
+    const [endTraining, setEndTraining] = useState(false)
 
     function handleAnswerChange(event) {
         setAnswer(event.target.value)
@@ -31,7 +34,7 @@ export default function TrainingPage({ minTermCount, maxTermCount, minNum, maxNu
 
     function checkAnswer() {
         if (answer != solveProblem(problem)) {
-            console.log("Incorrect!")
+            setEndTraining(true)
         }
     }
 
@@ -156,6 +159,16 @@ export default function TrainingPage({ minTermCount, maxTermCount, minNum, maxNu
                     ✓
                 </Button>
             </HLayout>
+
+            <Modal isOpen={ endTraining }>
+                <Text fontSize="30px" fontFamily="WDXL">
+                    Вы проиграли!
+                </Text>
+                <HLayout gap="10px">
+                    <Button onClick={() => window.location.reload()}>Начать заново</Button>
+                    <Button><Link to="/">На главный</Link></Button>
+                </HLayout>
+            </Modal>
         </div>
     )
 }
