@@ -7,6 +7,7 @@ import TextEdit from "../../components/TextEdit/TextEdit"
 import Button from "../../components/Button/Button"
 import HLayout from "../../components/HLayout/HLayout"
 import Modal from "../../components/Modal/Modal"
+import ProgressBar from "../../components/ProgressBar/ProgressBar"
 
 export default function TrainingPage({ minTermCount, maxTermCount, minNum, maxNum, pickRandom, rangeRandom }) {
     // The percentage at which larger numbers are selected when adding and substracting
