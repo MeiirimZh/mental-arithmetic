@@ -18,6 +18,9 @@ export default function TrainingPage({ minTermCount, maxTermCount, minNum, maxNu
     const [problem, setProblem] = useState(generateProblem())
     const [endTraining, setEndTraining] = useState(false)
 
+    const [timer, setTimer] = useState(10)
+    const [timeLeft, setTimeLeft] = useState(timer)
+
     function handleAnswerChange(event) {
         setAnswer(event.target.value)
 
@@ -136,6 +139,12 @@ export default function TrainingPage({ minTermCount, maxTermCount, minNum, maxNu
         return eval(problem)
     }
 
+    setTimeout(() => {setEndTraining(true)}, timer * 1000)
+
+    setInterval(() => {
+        if (timeLeft > 0) setTimeLeft(timeLeft - 1)
+    }, 1000)
+
     return (
         <div className="wrapper">
             <Header></Header>
@@ -171,6 +180,8 @@ export default function TrainingPage({ minTermCount, maxTermCount, minNum, maxNu
                     <Button fontFamily="Rubik"><Link className="link" to="/">На главный</Link></Button>
                 </HLayout>
             </Modal>
+
+            <Text>{timeLeft}</Text>
         </div>
     )
 }
