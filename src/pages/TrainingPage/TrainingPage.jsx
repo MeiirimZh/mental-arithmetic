@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 import { Link } from "react-router-dom"
 import Header from "../../components/Header/Header"
 import Background from "../../components/Background/Background"
@@ -19,13 +19,17 @@ export default function TrainingPage({ minTermCount, maxTermCount, minNum, maxNu
     const [problem, setProblem] = useState(generateProblem())
     const [endTraining, setEndTraining] = useState(false)
 
-    const [timer, setTimer] = useState(10)
+    const [timer] = useState(10)
     const [timeLeft, setTimeLeft] = useState(timer)
+
+    const loseTimeRef = useRef(null)
+    const intervalRef = useRef(null)
 
     function handleAnswerChange(event) {
         setAnswer(event.target.value)
 
         if (event.target.value == solveProblem(problem)) {
+            restartTimer()
             nextProblem()
         }
     }
@@ -140,11 +144,31 @@ export default function TrainingPage({ minTermCount, maxTermCount, minNum, maxNu
         return eval(problem)
     }
 
-    setTimeout(() => {setEndTraining(true)}, timer * 1000)
+    function restartTimer() {
+        clearTimeout(loseTimeRef.current)
+        clearInterval(intervalRef.current)
 
-    setInterval(() => {
-        if (timeLeft > 0) setTimeLeft(timeLeft - 1)
-    }, 1000)
+        setTimeLeft(timer)
+
+        loseTimeRef.current = setTimeout(() => {
+            setEndTraining(true)
+        }, timer * 1000)
+
+        intervalRef.current = setInterval(() => {
+            setTimeLeft(prev => {
+                if (prev > 0) return prev - 1
+                return 0
+            })
+        }, 1000)
+    }
+
+    useEffect(() => {
+        restartTimer()
+        return () => {
+            clearTimeout(loseTimeRef.current)
+            clearInterval(intervalRef.current)
+        }
+    }, [])
 
     return (
         <div className="wrapper">
