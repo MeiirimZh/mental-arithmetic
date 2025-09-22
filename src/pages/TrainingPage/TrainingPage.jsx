@@ -22,6 +22,8 @@ export default function TrainingPage({ minTermCount, maxTermCount, minNum, maxNu
     const [timer] = useState(10)
     const [timeLeft, setTimeLeft] = useState(timer)
 
+    const [progressBarWidth] = useState(100)
+
     const loseTimeRef = useRef(null)
     const intervalRef = useRef(null)
 
@@ -174,8 +176,9 @@ export default function TrainingPage({ minTermCount, maxTermCount, minNum, maxNu
         <div className="wrapper">
             <Header></Header>
 
-            <ProgressBar bgColor="#F0828C" color="#fff" bgWidth="100px" bgHeight="20px" width="80px" 
-            borderRadius="10px" margin="0 auto 40px auto"/>
+            <ProgressBar bgColor="#F0828C" color="#fff" bgWidth={`${progressBarWidth}px`} bgHeight="20px" 
+            borderRadius="10px" margin="0 auto 40px auto"
+            width={`${timeLeft * progressBarWidth / timer}px`} />
 
             <Background bgColor="#F0828C" width="600px" height="200px" borderRadius="20px"
             centerH="center" centerV="center" shadow="rgba(0, 0, 0, 0.25) 6px 6px 4px"
