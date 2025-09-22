@@ -1,0 +1,19 @@
+.progressBarBg {
+    background-color: var(--bgColor);
+
+    width: var(--bgWidth);
+    height: var(--bgHeight);
+
+    border-radius: var(--borderRadius);
+
+    margin: var(--margin);
+}
+
+.progressBar {
+    background-color: var(--color);
+
+    width: var(--width);
+    height: var(--bgHeight);
+
+    border-radius: var(--borderRadius);
+}
