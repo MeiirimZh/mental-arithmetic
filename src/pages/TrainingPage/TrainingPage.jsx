@@ -21,11 +21,10 @@ export default function TrainingPage({ minTermCount, maxTermCount, minNum, maxNu
 
     const [timer] = useState(10)
     const [timeLeft, setTimeLeft] = useState(timer)
+    const endTimeRef = useRef(null)
+    const rafRef = useRef(null)
 
     const [progressBarWidth] = useState(100)
-
-    const loseTimeRef = useRef(null)
-    const intervalRef = useRef(null)
 
     function handleAnswerChange(event) {
         setAnswer(event.target.value)
@@ -147,29 +146,30 @@ export default function TrainingPage({ minTermCount, maxTermCount, minNum, maxNu
     }
 
     function restartTimer() {
-        clearTimeout(loseTimeRef.current)
-        clearInterval(intervalRef.current)
+        cancelAnimationFrame(rafRef.current)
 
-        setTimeLeft(timer)
+        endTimeRef.current = Date.now() + timer * 1000
 
-        loseTimeRef.current = setTimeout(() => {
-            setEndTraining(true)
-        }, timer * 1000)
+        function tick() {
+            const now = Date.now()
+            const diff = endTimeRef.current - now;
 
-        intervalRef.current = setInterval(() => {
-            setTimeLeft(prev => {
-                if (prev > 0) return prev - 1
-                return 0
-            })
-        }, 1000)
+            if (diff <= 0) {
+                setTimeLeft(0)
+                setEndTraining(true)
+                return
+            }
+
+            setTimeLeft(diff / 1000)
+            rafRef.current = requestAnimationFrame(tick)
+        }
+
+        tick()
     }
 
     useEffect(() => {
         restartTimer()
-        return () => {
-            clearTimeout(loseTimeRef.current)
-            clearInterval(intervalRef.current)
-        }
+        return () => cancelAnimationFrame(rafRef.current)
     }, [])
 
     return (
@@ -178,7 +178,7 @@ export default function TrainingPage({ minTermCount, maxTermCount, minNum, maxNu
 
             <ProgressBar bgColor="#F0828C" color="#fff" bgWidth={`${progressBarWidth}px`} bgHeight="20px" 
             borderRadius="10px" margin="0 auto 40px auto"
-            width={`${timeLeft * progressBarWidth / timer}px`} />
+            width={`${(timeLeft / timer) * progressBarWidth}px`} />
 
             <Background bgColor="#F0828C" width="600px" height="200px" borderRadius="20px"
             centerH="center" centerV="center" shadow="rgba(0, 0, 0, 0.25) 6px 6px 4px"
@@ -211,8 +211,6 @@ export default function TrainingPage({ minTermCount, maxTermCount, minNum, maxNu
                     <Button fontFamily="Rubik"><Link className="link" to="/">На главный</Link></Button>
                 </HLayout>
             </Modal>
-
-            <Text>{timeLeft}</Text>
         </div>
     )
 }
