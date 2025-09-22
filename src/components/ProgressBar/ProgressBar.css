@@ -15,5 +15,5 @@
     width: var(--width);
     height: var(--bgHeight);
 
-    border-radius: var(--borderRadius);
+    border-radius: var(--barBorderRadius);
 }
